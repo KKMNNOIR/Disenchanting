@@ -1,3 +1,4 @@
-execute as @e[type=item,nbt={Item:{id:"minecraft:book"}}] at @s if data entity @s {Item:{id:"minecraft:book"}} if block ~ ~-0.75 ~ minecraft:enchanting_table if entity @e[type=item,nbt={Item:{tag:{Enchantments:[{}]}}},limit=1,distance=..1] run function disenchanting:disenchant
-execute as @e[type=item,nbt={Item:{id:"minecraft:writable_book"}}] at @s if data entity @s {Item:{id:"minecraft:writable_book"}} if block ~ ~-0.75 ~ minecraft:enchanting_table if entity @e[type=item,nbt={Item:{tag:{Enchantments:[{}]}}},limit=1,distance=..1] run function disenchanting:disenchant
-execute as @e[type=minecraft:item,nbt={Item:{tag:{Enchantments:[{}]}}}] at @s if block ~ ~ ~ minecraft:lectern[has_book=true] if entity @e[type=minecraft:item,limit=1,distance=..1,nbt={Item:{id:"minecraft:book"}}] run function disenchanting:disenchant_lectern
+# Disenchant on Enchanting Table
+execute as @e[type=item,predicate=disenchanting:disenchanter] at @s if block ~ ~-0.75 ~ minecraft:enchanting_table if entity @e[type=item,nbt={Item:{tag:{Enchantments:[{}]}}},limit=1,distance=..1] run function disenchanting:disenchant
+# Disenchant on Lectern
+execute as @e[type=minecraft:item,nbt={Item:{tag:{Enchantments:[{}]}}}] at @s if block ~ ~ ~ minecraft:lectern[has_book=true] if entity @e[type=minecraft:item,limit=1,distance=..1,predicate=disenchanting:disenchanter] run function disenchanting:disenchant_lectern
