@@ -1,0 +1,26 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "minecraft:enchanted_book",
+					"functions": [
+						{
+							"function": "minecraft:copy_nbt",
+							"source": "this",
+							"ops": [
+								{
+									"source": "Item.tag.Enchantments[11]",
+									"target": "Item.tag.StoredEnchantments[11]",
+									"op": "append"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
