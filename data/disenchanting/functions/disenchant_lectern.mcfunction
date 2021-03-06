@@ -1,5 +1,8 @@
-data merge entity @e[type=minecraft:item,distance=..1,limit=1,sort=nearest,nbt={Item:{id:"minecraft:book"}}] {Age:5999s}
+# Erase Book or Written Book
+data merge entity @e[type=minecraft:item,distance=..1,limit=1,sort=nearest,predicate=disenchanting:disenchanter] {Age:5999s}
+# Pop Enchanted Book
 loot spawn ~ ~ ~ loot disenchanting:pages/enchanted_book
+# Disenchant : Select Enchantment order(0-15)
 execute if data block ~ ~ ~ {Page:0} run function disenchanting:pages/0
 execute if data block ~ ~ ~ {Page:1} run function disenchanting:pages/1
 execute if data block ~ ~ ~ {Page:2} run function disenchanting:pages/2
@@ -16,6 +19,8 @@ execute if data block ~ ~ ~ {Page:12} run function disenchanting:pages/12
 execute if data block ~ ~ ~ {Page:13} run function disenchanting:pages/13
 execute if data block ~ ~ ~ {Page:14} run function disenchanting:pages/14
 execute if data block ~ ~ ~ {Page:15} run function disenchanting:pages/15
+# Disenchanted Item : Reset RepairCost
 data remove entity @e[type=item,nbt={Item:{tag:{Enchantments:[{}]}}},limit=1,distance=..1] Item.tag.RepairCost
+# Effect
 particle minecraft:instant_effect ~ ~ ~ 0.125 0.125 0.125 10 100 force @a
 playsound minecraft:block.enchantment_table.use block @a ~ ~ ~ 1 1
