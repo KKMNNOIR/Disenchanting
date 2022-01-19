@@ -9,11 +9,14 @@
 					"functions": [
 						{
 							"function": "minecraft:copy_nbt",
-							"source": "this",
+							"source": {
+								"type": "minecraft:storage",
+								"source": "disenchanting:original"
+							},
 							"ops": [
 								{
-									"source": "Item.tag.Enchantments[13]",
-									"target": "Item.tag.StoredEnchantments[13]",
+									"source": "Enchantments[13]",
+									"target": "StoredEnchantments",
 									"op": "append"
 								}
 							]
