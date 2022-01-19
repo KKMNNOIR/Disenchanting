@@ -1,5 +1,7 @@
 # Erase Book or Written Book
 data merge entity @e[type=minecraft:item,distance=..1,limit=1,sort=nearest,predicate=disenchanting:disenchanter] {Age:5999s}
+# Check Count
+execute as @e[type=minecraft:item,distance=..1,limit=1,sort=nearest,predicate=disenchanting:disenchanter,nbt=!{Item:{Count:1b}}] run function disenchanting:copy_count_to_score
 # Copy enchantments 
 data modify storage disenchanting:original Enchantments append from entity @s Item.tag.Enchantments[]
 # Pop Enchanted Book
